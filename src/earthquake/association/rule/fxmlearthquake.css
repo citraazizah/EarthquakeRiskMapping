@@ -1,0 +1,10 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.kaa {
+    -fx-background-color: rgba(0,0,0,0.7);
+}
+.umaru{
+    -fx-background-color: rgba(255,255,255,1);
+}

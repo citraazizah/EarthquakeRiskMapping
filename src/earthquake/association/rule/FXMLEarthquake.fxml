@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" prefHeight="780.0" prefWidth="1978.0" style="-fx-background-color: #dcfafc;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="earthquake.association.rule.FXMLEarthquakeController">
+    <stylesheets>
+        <URL value="@fxmlearthquake.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="952.0" prefWidth="1978.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="25.0" prefWidth="1978.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label id="tittle" alignment="CENTER" contentDisplay="CENTER" layoutX="441.0" layoutY="2.0" text="EARTHQUAKE RISK MAPPING INFORMATION" wrapText="true" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="441.0" AnchorPane.rightAnchor="441.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="672.0" prefWidth="297.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="11.0" layoutY="14.0" prefHeight="215.0" prefWidth="275.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="443.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="14.0">
+                     <children>
+                        <Label layoutX="88.0" layoutY="113.0" text=":" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="183.0" AnchorPane.topAnchor="113.0" />
+                        <Label layoutX="88.0" layoutY="55.0" text=":" AnchorPane.bottomAnchor="141.0" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="183.0" AnchorPane.topAnchor="55.0" />
+                        <Label layoutX="52.0" layoutY="6.0" prefHeight="29.0" prefWidth="171.0" text="Earthquake Visualization" underline="true" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="6.0">
+                           <font>
+                              <Font name="SansSerif Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="49.0" prefHeight="29.0" prefWidth="38.0" text="Year" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="49.0">
+                           <font>
+                              <Font name="SansSerif Regular" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="108.0" prefHeight="29.0" prefWidth="61.0" text="Magnitude" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="108.0">
+                           <font>
+                              <Font name="SansSerif Regular" size="12.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="comboboxYearStart" layoutX="97.0" layoutY="50.0" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #91a0a8;" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="50.0">
+                           <opaqueInsets>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </opaqueInsets>
+                          </ComboBox>
+                        <Label layoutX="178.0" layoutY="55.0" text="-" />
+                        <ComboBox fx:id="comboboxYearEnd" layoutX="189.0" layoutY="50.0" prefHeight="28.0" prefWidth="72.0" style="-fx-background-color: #91a0a8;" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="189.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0">
+                           <opaqueInsets>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </opaqueInsets>
+                        </ComboBox>
+                        <ComboBox fx:id="comboboxMagMin" layoutX="97.0" layoutY="109.0" prefHeight="28.0" prefWidth="72.0" style="-fx-background-color: #91a0a8;" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="109.0">
+                           <opaqueInsets>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </opaqueInsets>
+                        </ComboBox>
+                        <Label layoutX="180.0" layoutY="114.0" text="-" />
+                        <ComboBox fx:id="comboboxMagMax" layoutX="190.0" layoutY="109.0" prefHeight="28.0" prefWidth="70.0" style="-fx-background-color: #91a0a8;" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="109.0">
+                           <opaqueInsets>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </opaqueInsets>
+                        </ComboBox>
+                        <JFXButton fx:id="buttonVisualize" layoutX="91.0" layoutY="160.0" onAction="#visualizeButtonAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #4287f5;" text="Visualization" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="160.0">
+                           <ripplerFill>
+                              <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.09206349509102958" startY="0.09206346784319197">
+                                 <stops>
+                                    <Stop color="#71d9dd" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="11.0" layoutY="239.0" prefHeight="215.0" prefWidth="275.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="239.0">
+                     <children>
+                        <Label layoutX="52.0" layoutY="6.0" prefHeight="29.0" prefWidth="171.0" text="Earthquake Information" underline="true" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="6.0">
+                           <font>
+                              <Font name="SansSerif Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="25.0" layoutY="54.0" text="Date" AnchorPane.bottomAnchor="143.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="222.0" AnchorPane.topAnchor="54.0" />
+                        <Label layoutX="25.0" layoutY="87.0" text="Coordinate" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="87.0" />
+                        <Label layoutX="25.0" layoutY="118.0" text="Province" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="25.0" layoutY="154.0" text="Magnitude" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="25.0" layoutY="185.0" text="Depth" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="109.0" layoutY="52.0" text=":" AnchorPane.leftAnchor="109.0" />
+                        <Label layoutX="109.0" layoutY="87.0" text=":" AnchorPane.leftAnchor="109.0" />
+                        <Label layoutX="109.0" layoutY="118.0" prefWidth="10.0" text=":" AnchorPane.leftAnchor="109.0" />
+                        <Label layoutX="109.0" layoutY="154.0" prefWidth="10.0" text=":" AnchorPane.leftAnchor="109.0" />
+                        <Label layoutX="108.0" layoutY="185.0" prefWidth="10.0" text=":" AnchorPane.leftAnchor="108.0" />
+                        <Label fx:id="labelDate" layoutX="138.0" layoutY="52.0" text="-" AnchorPane.leftAnchor="144.0" />
+                        <Label fx:id="labelCoordinate" layoutX="142.0" layoutY="87.0" prefWidth="0.0" text="-" AnchorPane.leftAnchor="144.0" />
+                        <Label fx:id="labelProvince" layoutX="144.0" layoutY="118.0" prefWidth="0.0" text="-" AnchorPane.leftAnchor="144.0" />
+                        <Label fx:id="labelMagnitude" layoutX="138.0" layoutY="154.0" prefWidth="0.0" text="-" AnchorPane.leftAnchor="144.0" />
+                        <Label fx:id="labelDepth" layoutX="142.0" layoutY="185.0" prefWidth="0.0" text="-" AnchorPane.leftAnchor="144.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="11.0" layoutY="465.0" prefHeight="193.0" prefWidth="274.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="465.0">
+                     <children>
+                        <JFXButton contentDisplay="CENTER" layoutX="35.0" layoutY="31.0" prefHeight="48.0" prefWidth="99.0" style="-fx-background-color: #4eb2f5;" text="Association" wrapText="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="31.0">
+                           <ripplerFill>
+                              <LinearGradient cycleMethod="REFLECT" endX="0.9666666666666667" endY="0.8761904761904762" startX="0.20952380952380953" startY="0.49523809523809526">
+                                 <stops>
+                                    <Stop color="#ff2e2ede" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                        <JFXButton contentDisplay="CENTER" layoutX="152.0" layoutY="31.0" prefHeight="48.0" prefWidth="99.0" style="-fx-background-color: #4eb2f5;" text="Density" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="31.0">
+                           <ripplerFill>
+                              <LinearGradient cycleMethod="REFLECT" endX="0.9666666666666667" endY="0.8761904761904762" startX="0.20952380952380953" startY="0.49523809523809526">
+                                 <stops>
+                                    <Stop color="#ff2e2ede" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                        <JFXButton layoutX="25.0" layoutY="105.0" prefHeight="48.0" prefWidth="99.0" style="-fx-background-color: #4eb2f5;" text="PDF" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="25.0">
+                           <ripplerFill>
+                              <LinearGradient cycleMethod="REFLECT" endX="0.9666666666666667" endY="0.8761904761904762" startX="0.20952380952380953" startY="0.49523809523809526">
+                                 <stops>
+                                    <Stop color="#ff2e2ede" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                        <JFXButton layoutX="152.0" layoutY="113.0" prefHeight="48.0" prefWidth="99.0" style="-fx-background-color: #4eb2f5;" text="Prediction" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="25.0">
+                           <ripplerFill>
+                              <LinearGradient cycleMethod="REFLECT" endX="0.9666666666666667" endY="0.8761904761904762" startX="0.20952380952380953" startY="0.49523809523809526">
+                                 <stops>
+                                    <Stop color="#ff2e2ede" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="628.0" prefWidth="1681.0" BorderPane.alignment="CENTER">
+               <children>
+                  <WebView fx:id="webView" prefHeight="672.0" prefWidth="1682.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="10.0" />
+               </children></AnchorPane>
+         </center>
+         <right>
+            <AnchorPane prefHeight="734.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <AnchorPane prefHeight="234.0" prefWidth="1955.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <StackPane fx:id="loadingPane" layoutX="469.0" layoutY="314.0" prefHeight="275.0" prefWidth="386.0" styleClass="kaa" visible="false">
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="450.0" styleClass="umaru">
+               <children>
+                  <Text fill="#263238" layoutX="14.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Wait ...">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#263238" layoutX="14.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Processing your Data">
+                     <font>
+                        <Font name="Segoe UI" size="36.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="img" fitHeight="170.0" fitWidth="170.0" layoutX="140.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
