@@ -171,16 +171,22 @@
                </children>
             </AnchorPane>
          </left>
+         
+         
+         
+         
+         
+         
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <WebView fx:id="webView" prefHeight="502.0" prefWidth="691.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                  <WebView fx:id="webView" layoutX="14.0" layoutY="5.0" prefHeight="502.0" prefWidth="691.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="5.0" />
                </children></AnchorPane>
          </center>
          <right>
             <AnchorPane prefHeight="525.0" prefWidth="270.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="160.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <AnchorPane layoutX="14.0" prefHeight="160.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label layoutX="10.0" layoutY="10.0" text="Details Information" textOverrun="CLIP">
                            <font>

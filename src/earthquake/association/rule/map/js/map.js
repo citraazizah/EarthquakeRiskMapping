@@ -124,7 +124,6 @@ var legend = L.control({position: 'bottomright'});
 
 function clearMarker() {
     layerGroup.clearLayers();
-
 }
 
 function visualize(id, lat, lang, depth, mag) {
@@ -134,7 +133,7 @@ function visualize(id, lat, lang, depth, mag) {
         fillOpacity: getDepth(depth),
         radius: mag * 1.1
     }).on('click', function (ev) {
-        window.eqMap.showInfoEq(id);
+        window.eqMap.showInfoEarthquake(id);
     }).addTo(layerGroup);
 }
 function createLegend(k) {

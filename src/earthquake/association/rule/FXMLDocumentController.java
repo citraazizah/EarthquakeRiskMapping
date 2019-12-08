@@ -262,7 +262,8 @@ public class FXMLDocumentController implements Initializable {
         Calendar calendarLastDate = Calendar.getInstance();
         calendarLastDate.setTime(lastDate);
         int totYear = 0;
-        //SET YEARS
+        
+        //SET YEARS IN COMBOBOX
         firstYear = calendarFirstDate.get(Calendar.YEAR);
         lastYear = calendarLastDate.get(Calendar.YEAR);
         for (int i = calendarFirstDate.get(Calendar.YEAR); i <= calendarLastDate.get(Calendar.YEAR); i++) {
@@ -270,16 +271,20 @@ public class FXMLDocumentController implements Initializable {
             comboboxYearEnd.getItems().add(i);
             totYear++;
         }
-        comboboxYearStart.getSelectionModel().select(totYear - 2);
-        comboboxYearEnd.getSelectionModel().select(totYear - 1);
-        //SET MAGNITUDE
+      /** default selection data in combobox*/
+//        comboboxYearStart.getSelectionModel().select(totYear - 2);
+//        comboboxYearEnd.getSelectionModel().select(totYear - 1);
+        
+        //SET MAGNITUDE IN COMBOBOX
         for (int i = 1; i <= 10; i++) {
             comboboxMagMin.getItems().add(i);
             comboboxMagMax.getItems().add(i);
         }
-        comboboxMagMin.getSelectionModel().select(4);
-        comboboxMagMax.getSelectionModel().select(8);
+//        comboboxMagMin.getSelectionModel().select(0);
+//        comboboxMagMax.getSelectionModel().select(0);
+  
 
+//      end parameter
         SpinnerValueFactory.DoubleSpinnerValueFactory valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1, 1, 0.1, 0.1);
         SpinnerValueFactory.DoubleSpinnerValueFactory valueFactory1 = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1, 1, 0.1, 0.1);
         spinnerSupport.setValueFactory(valueFactory);
@@ -348,7 +353,7 @@ public class FXMLDocumentController implements Initializable {
     private void visualizeButtonAction(ActionEvent event) throws ParseException {
         animationFade(0.0, 1.0);
         loadingPane.setVisible(true);
-        clearViewresult();
+       //clearViewresult();
         
         new Thread() {
             @Override
@@ -370,12 +375,11 @@ public class FXMLDocumentController implements Initializable {
                 });
             }
         }.start();
-
     }
 
     public void showInfoEq(int i) {
         labelDate.setText(dataEqFilter.get(i)[0]);
-        labelCoordinate.setText(dataEqFilter.get(i)[1] + ", " + dataEqFilter.get(i)[2]);
+        labelCoordinate.setText(dataEqFilter.get(i)[1] + "s, " + dataEqFilter.get(i)[2]);
         labelProvince.setText(dataEqFilter.get(i)[6]);
         labelMag.setText(dataEqFilter.get(i)[4]);
         labelDepth.setText(dataEqFilter.get(i)[3]);

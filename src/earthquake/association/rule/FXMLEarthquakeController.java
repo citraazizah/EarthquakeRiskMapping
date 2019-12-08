@@ -148,11 +148,9 @@ public class FXMLEarthquakeController implements Initializable {
             jsObject = (JSObject) webEngine.executeScript("window");
             jsObject.setMember("eqMap", this);
         });
-        
         try {
             // TODO
             initializeData();
-            tableAction();
         } catch (ParseException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -171,6 +169,7 @@ public class FXMLEarthquakeController implements Initializable {
         Calendar calendarLastDate = Calendar.getInstance();
         calendarLastDate.setTime(lastDate);
         int totYear = 0;
+        
         //SET YEARS
         firstYear = calendarFirstDate.get(Calendar.YEAR);
         lastYear = calendarLastDate.get(Calendar.YEAR);
@@ -179,20 +178,14 @@ public class FXMLEarthquakeController implements Initializable {
             comboboxYearEnd.getItems().add(i);
             totYear++;
         }
+        
         //SET MAGNITUDE
         for (int i = 1; i <= 10; i++) {
             comboboxMagMin.getItems().add(i);
             comboboxMagMax.getItems().add(i);
         }
-        comboboxMagMin.getSelectionModel().select(4);
-        comboboxMagMax.getSelectionModel().select(8); 
     }
-    
-    public void tableAction(){
-        
-    }
-    
-  
+   
     static ArrayList<String[]> readCSV(String fileName, String title) {
         String csvFile = fileName;
         BufferedReader br = null;
@@ -209,9 +202,8 @@ public class FXMLEarthquakeController implements Initializable {
                         continue;
                     }
                 }
-                // use comma as separator
                 String[] gempa = line.split(cvsSplitBy);
-                //masukkan datanya
+                //input dataGempa
                 dataGempaList.add(gempa);
             }
         } catch (FileNotFoundException e) {
@@ -229,13 +221,42 @@ public class FXMLEarthquakeController implements Initializable {
         }
         return dataGempaList;
     }
-    
+      
     private void animationFade(double from, double to) {
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.2), loadingPane);
         fadeOut.setFromValue(from);
         fadeOut.setToValue(to);
         fadeOut.play();
     }
+    
+           
+     @FXML
+    void visualizeButtonAction(ActionEvent event) throws Exception{
+        animationFade(0.0, 1.0);
+        loadingPane.setVisible(true);
+       // clearViewResult();      
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    dataEqFilter = dataFiltering();
+                } catch (ParseException ex) {
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //DATE LAT LONG DEPTH MAG IDPROV PROV
+                //0    1   2    3     4   5      6
+                Platform.runLater(() -> {
+                    for (int i = 0; i < dataEqFilter.size(); i++) {
+                        webEngine.executeScript("visualize(" + i + "," + dataEqFilter.get(i)[1] + "," + dataEqFilter.get(i)[2] + "," + dataEqFilter.get(i)[3] + "," + dataEqFilter.get(i)[4] + ");");
+                    }
+                    webEngine.executeScript("createLegend(" + 100 + ");");
+                    animationFade(1.0, 0.0);
+                    loadingPane.setVisible(false);
+                });
+            }
+        }.start();
+    }
+    
     
     ArrayList<String[]> dataFiltering() throws ParseException {
         int n = dataEq.size();
@@ -265,42 +286,25 @@ public class FXMLEarthquakeController implements Initializable {
         }
         return dataEqFilter;
     }
-       
-     @FXML
-    void visualizeButtonAction(ActionEvent event) {
-        animationFade(0.0, 1.0);
-        loadingPane.setVisible(true);
-//        clearViewresult();      
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    dataEqFilter = dataFiltering();
-                } catch (ParseException ex) {
-                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                //DATE LAT LONG DEPTH MAG IDPROV PROV
-                //0    1   2    3     4   5      6
-                Platform.runLater(() -> {
-                    for (int i = 0; i < dataEqFilter.size(); i++) {
-                        webEngine.executeScript("visualize(" + i + "," + dataEqFilter.get(i)[1] + "," + dataEqFilter.get(i)[2] + "," + dataEqFilter.get(i)[3] + "," + dataEqFilter.get(i)[4] + ");");
-                    }
-                    webEngine.executeScript("createLegend(" + 100 + ");");
-                    animationFade(1.0, 0.0);
-                    loadingPane.setVisible(false);
-                });
-            }
-        }.start();
-    }
+
     
-    public void showInfoEarthquake(int i){
+    public void showInfoEarthquake(int i) {
+        String lattitude = dataEqFilter.get(i)[1].toString();
+        String longitude = dataEqFilter.get(i)[2].toString();
+        String magnitude = dataEqFilter.get(i)[4].toString();
+        String depth = dataEqFilter.get(i)[3].toString();
+        String province = dataEqFilter.get(i)[6].toString();
+        
+        System.out.println("lat =" + lattitude + "long = " + longitude);
+        System.out.println("mag = " + magnitude);
+        System.out.println("depth = " + depth);
+        System.out.println("prov = " + province);
+        
         labelDate.setText(dataEqFilter.get(i)[0]);
-        labelCoordinate.setText(dataEqFilter.get(i)[1]);
-        labelProvince.setText(dataEqFilter.get(i)[6]);
-        labelMagnitude.setText(dataEqFilter.get(i)[4]);
-        labelDepth.setText(dataEqFilter.get(i)[3]);
+        labelMagnitude.setText(magnitude);
+        labelDepth.setText(depth);
+        labelProvince.setText(province);
     }
-    
     public void clearInfoEarthquake(){
        labelDate.setText("-");
        labelCoordinate.setText("-");
@@ -309,5 +313,8 @@ public class FXMLEarthquakeController implements Initializable {
        labelDepth.setText("-");
     }
     
-    
+    private void clearViewResult(){
+        webEngine.executeScript("clearMarker();");
+        clearInfoEarthquake();
+    }
 }

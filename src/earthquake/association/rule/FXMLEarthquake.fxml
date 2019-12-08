@@ -5,6 +5,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -76,7 +78,7 @@
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </opaqueInsets>
                         </ComboBox>
-                        <JFXButton fx:id="buttonVisualize" layoutX="91.0" layoutY="160.0" onAction="#visualizeButtonAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #4287f5;" text="Visualization" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="160.0">
+                        <JFXButton fx:id="buttonVisualize" layoutX="97.0" layoutY="161.0" onAction="#visualizeButtonAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #4287f5;" text="Visualization" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="161.0">
                            <ripplerFill>
                               <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.09206349509102958" startY="0.09206346784319197">
                                  <stops>
@@ -162,14 +164,29 @@
          <center>
             <AnchorPane prefHeight="628.0" prefWidth="1681.0" BorderPane.alignment="CENTER">
                <children>
-                  <WebView fx:id="webView" prefHeight="672.0" prefWidth="1682.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="10.0" />
+                  <WebView fx:id="webView" layoutX="6.0" layoutY="10.0" prefHeight="672.0" prefWidth="1682.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
                </children></AnchorPane>
          </center>
-         <right>
-            <AnchorPane prefHeight="734.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
-         </right>
          <bottom>
-            <AnchorPane prefHeight="234.0" prefWidth="1955.0" BorderPane.alignment="CENTER" />
+            <AnchorPane prefHeight="234.0" prefWidth="1955.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="242.0" layoutY="14.0" prefHeight="200.0" prefWidth="532.0">
+                     <children>
+                        <AnchorPane layoutX="152.0" layoutY="3.0" prefHeight="195.0" prefWidth="208.0">
+                           <children>
+                              <Label layoutY="13.0" text="Risk Value :" />
+                              <Label fx:id="labelRiskValue" layoutX="80.0" layoutY="13.0" text="-" />
+                              <TableView fx:id="consequentTable" editable="true" prefHeight="150.0" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="45.0">
+                                 <columns>
+                                    <TableColumn fx:id="consProvColumn" prefWidth="91.0" text="Antecedent" />
+                                    <TableColumn fx:id="averageProvColumn" maxWidth="137.0" prefWidth="116.0" text="Risk Value" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
          </bottom>
       </BorderPane>
       <StackPane fx:id="loadingPane" layoutX="469.0" layoutY="314.0" prefHeight="275.0" prefWidth="386.0" styleClass="kaa" visible="false">
