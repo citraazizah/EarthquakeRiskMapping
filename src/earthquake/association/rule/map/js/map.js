@@ -75,7 +75,6 @@ function association(prov1, prov2) {
                     };
                 }
             }
-
             for (var i = 0; i < newProv2.length; i++) {
                 if (feature.properties.A1N_2013 === newProv2[i].toUpperCase()) {
                     return {

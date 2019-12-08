@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
@@ -25,7 +26,7 @@
         <left> <!-- Border bagian Kiri-->
             <AnchorPane prefHeight="496.0" prefWidth="317.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="50.0" prefWidth="307.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="351.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
+                  <AnchorPane layoutX="5.0" layoutY="14.0" prefHeight="208.0" prefWidth="307.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="372.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
                      <children>
                         <Label alignment="CENTER" layoutX="82.0" layoutY="22.0" text="Earthquake Visualization" textAlignment="CENTER" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="22.0">
                            <font>
@@ -66,7 +67,7 @@
                         </Label>
                         <ComboBox fx:id="comboboxMagMin" layoutX="100.0" layoutY="105.0" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #b0bec5;" />
                         <ComboBox fx:id="comboboxMagMax" layoutX="208.0" layoutY="105.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #b0bec5;" AnchorPane.rightAnchor="15.0" />
-                        <JFXButton fx:id="buttonVisualize" layoutX="88.0" layoutY="156.0" onAction="#visualizeButtonAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #4287f5;" text="Visualization" textFill="WHITE" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="156.0">
+                        <JFXButton fx:id="buttonVisualize" layoutX="76.0" layoutY="155.0" onAction="#visualizeButtonAction" prefHeight="32.0" prefWidth="159.0" style="-fx-background-color: #4287f5;" text="Visualization" textFill="WHITE" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="155.0">
                            <ripplerFill>
                               <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.09206349509102958" startY="0.09206346784319197">
                                  <stops>
@@ -75,7 +76,90 @@
                                  </stops>
                               </LinearGradient>
                            </ripplerFill>
+                           <font>
+                              <Font name="SansSerif Bold" size="12.0" />
+                           </font>
                         </JFXButton>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="5.0" layoutY="229.0" prefHeight="225.0" prefWidth="307.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="59.0" layoutY="18.0" prefHeight="25.0" prefWidth="190.0" text="Association Rule Parameter" textAlignment="CENTER" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="18.0">
+                           <font>
+                              <Font name="SansSerif Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="42.0" layoutY="57.0" text="Transaction">
+                           <font>
+                              <Font name="SansSerif Regular" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="154.0" layoutY="56.0" text=":">
+                           <font>
+                              <Font name="SansSerif" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="42.0" layoutY="94.0" text="Min_Support">
+                           <font>
+                              <Font name="SansSerif" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="154.0" layoutY="94.0" text=":">
+                           <font>
+                              <Font name="SansSerif" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="41.0" layoutY="134.0" text="Min_Confidence">
+                           <font>
+                              <Font name="SansSerif Regular" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="41.0" layoutY="171.0" text="Min_Lift">
+                           <font>
+                              <Font name="SansSerif Regular" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="153.0" layoutY="170.0" text=":">
+                           <font>
+                              <Font name="SansSerif" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="153.0" layoutY="133.0" text=":">
+                           <font>
+                              <Font name="SansSerif" size="13.0" />
+                           </font>
+                        </Label>
+                        <Spinner fx:id="spinnerSupport" layoutX="173.0" layoutY="91.0" prefHeight="25.0" prefWidth="74.0" />
+                        <Spinner fx:id="spinnerConfidence" layoutX="172.0" layoutY="130.0" prefHeight="25.0" prefWidth="74.0" />
+                        <Spinner fx:id="spinnerLift" layoutX="172.0" layoutY="167.0" prefHeight="25.0" prefWidth="74.0" />
+                        <ComboBox fx:id="comboboxTransaction" layoutX="172.0" layoutY="53.0" prefHeight="25.0" prefWidth="75.0" />
+                        <JFXButton fx:id="buttonAssociate" layoutX="50.0" layoutY="206.0" onAction="#associateButtonAction" prefHeight="32.0" prefWidth="208.0" style="-fx-background-color: #4287f5;" text="Association Rule" textFill="WHITE">
+                           <ripplerFill>
+                              <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.09206349509102958" startY="0.09206346784319197">
+                                 <stops>
+                                    <Stop color="#71d9dd" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                           <font>
+                              <Font name="SansSerif Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                        <Label layoutX="258.0" layoutY="57.0" text="Days">
+                           <font>
+                              <Font name="SansSerif Regular" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="15.0" layoutY="503.0" prefHeight="25.0" prefWidth="288.0">
+                     <children>
+                        <Label layoutX="-1.0" layoutY="3.0" prefHeight="20.0" prefWidth="232.0" text="Association Information" textAlignment="CENTER">
+                           <font>
+                              <Font name="SansSerif Bold" size="17.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
@@ -84,15 +168,16 @@
          
         
          <center>
-            <AnchorPane prefHeight="540.0" prefWidth="730.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="553.0" prefWidth="730.0" BorderPane.alignment="CENTER">
                <children>
-                  <WebView fx:id="webView" layoutX="14.0" layoutY="5.0" prefHeight="520.0" prefWidth="724.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0" />
-               </children></AnchorPane>
+                  <WebView fx:id="webView" layoutX="14.0" layoutY="5.0" prefHeight="517.0" prefWidth="724.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0" />
+               </children>
+            </AnchorPane>
          </center>
          <right>
             <AnchorPane prefHeight="573.0" prefWidth="231.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutX="20.0" layoutY="14.0" prefHeight="186.0" prefWidth="222.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="373.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
+                  <AnchorPane layoutX="20.0" layoutY="14.0" prefHeight="185.0" prefWidth="211.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="395.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
                      <children>
                         <Label layoutX="21.0" layoutY="14.0" prefHeight="16.0" prefWidth="158.0" text="Earthquake Information" textOverrun="CLIP" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="21.0">
                            <font>
@@ -175,7 +260,20 @@
                            </font>
                         </Label>
                      </children>
-                  </AnchorPane> 
+                  </AnchorPane>
+                  <JFXButton fx:id="buttonAssociate1" layoutX="12.0" layoutY="289.0" onAction="#associateButtonAction" prefHeight="32.0" prefWidth="208.0" style="-fx-background-color: #4287f5;" text="Association Rule" textFill="WHITE">
+                     <ripplerFill>
+                        <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.09206349509102958" startY="0.09206346784319197">
+                           <stops>
+                              <Stop color="#71d9dd" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </ripplerFill>
+                     <font>
+                        <Font name="SansSerif Bold" size="12.0" />
+                     </font>
+                  </JFXButton> 
                </children>
             </AnchorPane>
          </right>
@@ -193,46 +291,41 @@
       </BorderPane>
       
       
-      <AnchorPane prefHeight="220.0" prefWidth="1278.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="555.0">
+      <AnchorPane layoutY="563.0" prefHeight="217.0" prefWidth="1278.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="563.0">
          <children>
-            <AnchorPane prefHeight="225.0" prefWidth="1278.0" style="-fx-background-color: #eee;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutY="11.0" prefHeight="204.0" prefWidth="1278.0" style="-fx-background-color: #eee;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="11.0">
                <children>
-                  <Label layoutX="10.0" layoutY="10.0" text="Association Analysis Information">
-                     <font>
-                        <Font name="Segoe UI Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="33.0" text="Antecedent Province">
+                  <Label layoutX="14.0" layoutY="16.0" text="Antecedent Province">
                      <font>
                         <Font name="Segoe UI" size="13.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tableAntecendent" layoutX="10.0" layoutY="55.0" prefHeight="125.0" prefWidth="190.0" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="55.0">
+                  <TableView fx:id="tableAntecendent" layoutX="4.0" layoutY="45.0" prefHeight="149.0" prefWidth="190.0" AnchorPane.bottomAnchor="12.0" AnchorPane.topAnchor="45.0">
                      <columns>
                         <TableColumn fx:id="colIDAntecendent" prefWidth="29.0" text="ID" />
                         <TableColumn fx:id="colProvAntecendent" prefWidth="160.0" text="Province" />
                      </columns>
                   </TableView>
-                  <Label layoutX="210.0" layoutY="33.0" text="Associated Provinces">
+                  <Label layoutX="205.0" layoutY="16.0" text="Associated Provinces">
                      <font>
-                        <Font name="Segoe UI" size="13.0" />
+                        <Font name="SansSerif Regular" size="13.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tableAssociation" layoutX="205.0" layoutY="55.0" prefHeight="55.0" prefWidth="326.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="205.0" AnchorPane.topAnchor="55.0">
+                  <TableView fx:id="tableAssociation" layoutX="205.0" layoutY="45.0" prefHeight="149.0" prefWidth="326.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="205.0" AnchorPane.topAnchor="45.0">
                      <columns>
                         <TableColumn fx:id="colAntecen" prefWidth="118.0" text="Antecedent" />
                         <TableColumn fx:id="colConse" prefWidth="111.0" text="Consequent" />
                         <TableColumn fx:id="colConf" prefWidth="95.0" text="Confidence" />
                      </columns>
                   </TableView>
-                  <Label layoutX="540.0" layoutY="33.0" text="Explanation">
+                  <Label layoutX="549.0" layoutY="16.0" text="Explanation">
                      <font>
-                        <Font name="Segoe UI" size="13.0" />
+                        <Font name="SansSerif Regular" size="13.0" />
                      </font>
                   </Label>
-                  <ScrollPane fx:id="scrollPane" layoutX="540.0" layoutY="55.0" prefHeight="150.0" prefWidth="313.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="540.0" AnchorPane.topAnchor="55.0">
+                  <ScrollPane fx:id="scrollPane" layoutX="540.0" layoutY="48.0" prefHeight="143.0" prefWidth="313.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="540.0" AnchorPane.topAnchor="48.0">
                      <content>
-                        <TextFlow fx:id="textAssociation" prefHeight="149.0" prefWidth="350.0" style="-fx-background-color: #fff;" textAlignment="JUSTIFY" />
+                        <TextFlow fx:id="textAssociation" prefHeight="128.0" prefWidth="292.0" style="-fx-background-color: #fff;" textAlignment="JUSTIFY" />
                      </content>
                   </ScrollPane>
                   <AnchorPane layoutX="864.0" layoutY="10.0" prefHeight="195.0" prefWidth="208.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="864.0" AnchorPane.topAnchor="10.0" />

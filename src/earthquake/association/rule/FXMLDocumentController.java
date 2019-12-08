@@ -122,9 +122,9 @@ public class FXMLDocumentController implements Initializable {
     private Button buttonAssociate;
     @FXML
     private Button buttonPrediction;
-        @FXML
+    @FXML
     private Button buttonPDF;
-          @FXML
+    @FXML
     private Button buttonDensity;
     @FXML
     private Button buttonAssociateRisk;
@@ -292,15 +292,16 @@ public class FXMLDocumentController implements Initializable {
 
         SpinnerValueFactory valueFactorydb = new SpinnerValueFactory.DoubleSpinnerValueFactory(1, 10, 1, 1);
         spinnerLift.setValueFactory(valueFactorydb);
+       // spinnerLift.getValue();
 
         SpinnerValueFactory vfK = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 10, 1);
         spinnerK.setValueFactory(vfK);
 
         for (int i = 1; i <= 7; i++) {
             comboboxTransaction.getItems().add(i);
-
         }
-        comboboxTransaction.getSelectionModel().selectLast();
+//        comboboxTransaction.getSelectionModel().selectLast();
+        
         for (int i = 5; i <= 15; i += 5) {
             comboBoxdiskritRange.getItems().add(i);
             comboBoxincrementalRange.getItems().add(i);
@@ -433,6 +434,7 @@ public class FXMLDocumentController implements Initializable {
         for (int i = 0; i < rules.getRulesCount(); i++) {
             dataGempaAvailable.add(rules.getRules().get(i).getItemset1()[0]);
         }
+        
         dataGempaAvailable = dataGempaAvailable.stream().distinct().collect(Collectors.toList());
         Collections.sort(dataGempaAvailable);
         ObservableList<DataColumns> dataProv = FXCollections.observableArrayList();
@@ -1226,7 +1228,7 @@ public class FXMLDocumentController implements Initializable {
             }
             sea[0] = false;
             sea[1] = false;
-            coba = new ArrayList<>();
+          //  coba = new ArrayList<>();
             //System.out.println("===========================================");
         }
     }
